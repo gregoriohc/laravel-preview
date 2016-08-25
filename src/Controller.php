@@ -2,17 +2,18 @@
 
 namespace Gregoriohc\Preview;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
     public function show($view, Request $request)
     {
-        if (!PreviewServiceProvider::isEnabled()) abort(404);
+        if (!PreviewServiceProvider::isEnabled()) {
+            abort(404);
+        }
 
         $data = $request->all();
 
@@ -33,7 +34,7 @@ class Controller extends BaseController
                             list($class, $id) = $parts;
                             if (class_exists($class)) {
                                 try {
-                                    $object = new $class;
+                                    $object = new $class();
                                     if ($object instanceof Model && is_numeric($id)) {
                                         $value = call_user_func_array([$class, 'findOrFail'], [$id]);
                                     }
@@ -50,7 +51,7 @@ class Controller extends BaseController
                                     if (is_callable([$class, $method])) {
                                         $value = call_user_func_array([$class, $method], $params);
                                     } else {
-                                        $object = new $class;
+                                        $object = new $class();
                                         if (is_callable([$object, $method])) {
                                             $value = call_user_func_array([$object, $method], $params);
                                         }
