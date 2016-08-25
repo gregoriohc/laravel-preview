@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
 class PreviewServiceProvider extends LaravelServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -24,7 +23,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
     {
         $this->handleConfigs();
 
-        if (! $this->app->routesAreCached() && $this->isEnabled()) {
+        if (!$this->app->routesAreCached() && $this->isEnabled()) {
             Route::get('_preview/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
         }
     }
@@ -50,7 +49,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
 
     private function handleConfigs()
     {
-        $configPath = __DIR__ . '/../config/preview.php';
+        $configPath = __DIR__.'/../config/preview.php';
 
         $this->publishes([$configPath => config_path('preview.php')]);
 
@@ -59,6 +58,6 @@ class PreviewServiceProvider extends LaravelServiceProvider
 
     public static function isEnabled()
     {
-        return ((config('app.debug') && 'local' === config('app.env')) || config('preview.force_enable'));
+        return (config('app.debug') && 'local' === config('app.env')) || config('preview.force_enable');
     }
 }
