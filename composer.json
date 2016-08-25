@@ -1,5 +1,5 @@
 {
-  "name": "gregoriohc/preview",
+  "name": "gregoriohc/laravel-preview",
   "description": "Views preview package for Laravel",
   "keywords": ["laravel", "package", "view", "preview"],
   "homepage": "https://github.com/gregoriohc/preview",
