@@ -1,0 +1,38 @@
+{
+  "name": "gregoriohc/preview",
+  "description": "Views preview package for Laravel",
+  "keywords": ["laravel", "package", "view", "preview"],
+  "homepage": "https://github.com/gregoriohc/preview",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gregorio Hernández Caso",
+      "email": "gregoriohc@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.1.*|5.2.*|5.3.*",
+    "illuminate/view": "5.1.*|5.2.*|5.3.*",
+    "illuminate/routing": "5.1.*|5.2.*|5.3.*",
+    "illuminate/http": "5.1.*|5.2.*|5.3.*",
+    "illuminate/database": "5.1.*|5.2.*|5.3.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0",
+    "mockery/mockery": "^0.9.5",
+    "codeclimate/php-test-reporter": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Gregoriohc\\Preview\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Gregoriohc\\Preview\\Tests\\": "tests"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
