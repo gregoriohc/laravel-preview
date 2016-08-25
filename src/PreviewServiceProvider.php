@@ -24,7 +24,9 @@ class PreviewServiceProvider extends LaravelServiceProvider
         $this->handleConfigs();
 
         if (!$this->app->routesAreCached() && $this->isEnabled()) {
-            Route::get('_preview/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
+            Route::group(['middleware' => ['web']], function () {
+                Route::get('_preview/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
+            });
         }
     }
 
