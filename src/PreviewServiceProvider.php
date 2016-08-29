@@ -24,8 +24,14 @@ class PreviewServiceProvider extends LaravelServiceProvider
         $this->handleConfigs();
 
         if (!$this->app->routesAreCached() && $this->isEnabled()) {
-            Route::group(['middleware' => ['web']], function () {
-                Route::get('_preview/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
+            $middleware = [];
+            if (request()->has('_middleware')) {
+                $middleware = array_merge(config('preview.middleware'), explode(',', request('_middleware')));
+            }
+
+            Route::group(['middleware' => $middleware], function () {
+                $route = trim(config('preview.route'), '\\');
+                Route::get($route . '/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
             });
         }
     }
