@@ -31,7 +31,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
 
             Route::group(['middleware' => $middleware], function () {
                 $route = trim(config('preview.route'), '\\');
-                Route::get($route . '/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
+                Route::get($route.'/{view}', '\Gregoriohc\Preview\Controller@show')->name('_preview.show');
             });
         }
     }
