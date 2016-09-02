@@ -23,7 +23,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
     {
         $this->handleConfigs();
 
-        if (!$this->app->routesAreCached() && $this->isEnabled()) {
+        if (!$this->app->routesAreCached()) {
             $middleware = [];
             if (request()->has('_middleware')) {
                 $middleware = array_merge(config('preview.middleware'), explode(',', request('_middleware')));
