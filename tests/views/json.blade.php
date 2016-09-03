@@ -1,0 +1,1 @@
+{{ $myobject->foo }}
