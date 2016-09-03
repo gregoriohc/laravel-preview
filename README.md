@@ -5,7 +5,8 @@
 [![Build Status](https://img.shields.io/travis/gregoriohc/laravel-preview/master.svg?style=flat-square)](https://travis-ci.org/gregoriohc/laravel-preview)
 [![StyleCI](https://styleci.io/repos/66579513/shield)](https://styleci.io/repos/66579513)
 [![Quality Score](https://img.shields.io/scrutinizer/g/gregoriohc/laravel-preview.svg?style=flat-square)](https://scrutinizer-ci.com/g/gregoriohc/laravel-preview)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/gregoriohc/laravel-preview/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/gregoriohc/laravel-preview/?branch=master)
+[![Code Climate](https://codeclimate.com/github/gregoriohc/laravel-preview/badges/gpa.svg)](https://codeclimate.com/github/gregoriohc/laravel-preview)
+[![Test Coverage](https://codeclimate.com/github/gregoriohc/laravel-preview/badges/coverage.svg)](https://codeclimate.com/github/gregoriohc/laravel-preview/coverage)
 [![Total Downloads](https://img.shields.io/packagist/dt/gregoriohc/laravel-preview.svg?style=flat-square)](https://packagist.org/packages/gregoriohc/laravel-preview)
 
 **WARNING: USE THIS PACKAGE ONLY IN LOCAL/DEBUG MODE! ENABLING THIS PACKAGE IN PRODUCTION ENVIRONMENTS CAN REPRESENT A BIG SECURITY ISSUE!**
