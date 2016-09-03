@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/gregoriohc/laravel-preview.svg?style=flat-square)](https://packagist.org/packages/gregoriohc/laravel-preview)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/gregoriohc/laravel-preview/master.svg?style=flat-square)](https://travis-ci.org/gregoriohc/laravel-preview)
-[![StyleCI](https://styleci.io/repos/65543339/shield)](https://styleci.io/repos/65543339)
+[![StyleCI](https://styleci.io/repos/66579513/shield)](https://styleci.io/repos/66579513)
 [![Quality Score](https://img.shields.io/scrutinizer/g/gregoriohc/laravel-preview.svg?style=flat-square)](https://scrutinizer-ci.com/g/gregoriohc/laravel-preview)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/gregoriohc/laravel-preview/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/gregoriohc/laravel-preview/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/gregoriohc/laravel-preview.svg?style=flat-square)](https://packagist.org/packages/gregoriohc/laravel-preview)
@@ -11,6 +11,8 @@
 **WARNING: USE THIS PACKAGE ONLY IN LOCAL/DEBUG MODE! ENABLING THIS PACKAGE IN PRODUCTION ENVIRONMENTS CAN REPRESENT A BIG SECURITY ISSUE!**
 
 View preview package for Laravel
+
+This package can be used to preview your laravel views without needing to create a route or controller to load the view. It can also be useful if you want to preview your emails views without needing to send them.
 
 ## Contents
 
