@@ -39,7 +39,8 @@ class Controller extends BaseController
                                         if ($object instanceof Model && is_numeric($id)) {
                                             $value = call_user_func_array([$class, 'findOrFail'], [$id]);
                                         }
-                                    } catch (Exception $e) { /** Ignore errors */ }
+                                    } catch (Exception $e) { /* Ignore errors */
+                                    }
                                 }
                             } else {
                                 list($class, $method) = array_slice($parts, 0, 2);
@@ -51,7 +52,8 @@ class Controller extends BaseController
                                             $value = call_user_func_array([$class, $method], $params);
                                             $updated = true;
                                         }
-                                    } catch (Exception $e) { /** Ignore errors */ }
+                                    } catch (Exception $e) { /* Ignore errors */
+                                    }
                                     if (!$updated) {
                                         try {
                                             if (is_callable([$class, $method])) {
@@ -60,7 +62,8 @@ class Controller extends BaseController
                                                     $value = call_user_func_array([$object, $method], $params);
                                                 }
                                             }
-                                        } catch (Exception $e) { /** Ignore errors */ }
+                                        } catch (Exception $e) { /* Ignore errors */
+                                        }
                                     }
                                 }
                             }
