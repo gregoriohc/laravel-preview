@@ -21,7 +21,9 @@ class PreviewServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        $this->handleConfigs();
+        $this->publishes([
+            __DIR__.'/../config/preview.php' => config_path('preview.php')
+        ]);
 
         if (!$this->app->routesAreCached()) {
             $middleware = [];
@@ -43,27 +45,14 @@ class PreviewServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__.'/../config/preview.php', 'preview');
     }
 
     /**
-     * Get the services provided by the provider.
+     * Check if the package is enabled
      *
-     * @return array
+     * @return bool
      */
-    public function provides()
-    {
-        return [];
-    }
-
-    private function handleConfigs()
-    {
-        $configPath = __DIR__.'/../config/preview.php';
-
-        $this->publishes([$configPath => config_path('preview.php')]);
-
-        $this->mergeConfigFrom($configPath, 'preview');
-    }
-
     public static function isEnabled()
     {
         return (config('app.debug') && 'local' === config('app.env')) || config('preview.force_enable');

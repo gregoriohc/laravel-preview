@@ -30,38 +30,41 @@ class Controller extends BaseController
                             break;
                         case 1:
                             break;
-                        case 2:
-                            list($class, $id) = $parts;
-                            if (class_exists($class)) {
-                                try {
-                                    $object = new $class();
-                                    if ($object instanceof Model && is_numeric($id)) {
-                                        $value = call_user_func_array([$class, 'findOrFail'], [$id]);
-                                    }
-                                } catch (Exception $e) {
-                                    // Ignore errors
-                                }
-                            }
-                            break;
-                        default: {
-                            list($class, $method) = array_slice($parts, 0, 2);
-                            $params = array_slice($parts, 2);
-                            if (class_exists($class)) {
-                                try {
-                                    if (is_callable([$class, $method])) {
-                                        $value = call_user_func_array([$class, $method], $params);
-                                    } else {
+                        default:
+                            if (2 == count($parts) && is_numeric($parts[1])) {
+                                list($class, $id) = $parts;
+                                if (class_exists($class)) {
+                                    try {
                                         $object = new $class();
-                                        if (is_callable([$object, $method])) {
-                                            $value = call_user_func_array([$object, $method], $params);
+                                        if ($object instanceof Model && is_numeric($id)) {
+                                            $value = call_user_func_array([$class, 'findOrFail'], [$id]);
                                         }
+                                    } catch (Exception $e) { /** Ignore errors */ }
+                                }
+                            } else {
+                                list($class, $method) = array_slice($parts, 0, 2);
+                                $params = array_slice($parts, 2);
+                                if (class_exists($class)) {
+                                    $updated = false;
+                                    try {
+                                        if (is_callable([$class, $method])) {
+                                            $value = call_user_func_array([$class, $method], $params);
+                                            $updated = true;
+                                        }
+                                    } catch (Exception $e) { /** Ignore errors */ }
+                                    if (!$updated) {
+                                        try {
+                                            if (is_callable([$class, $method])) {
+                                                $object = new $class();
+                                                if (is_callable([$object, $method])) {
+                                                    $value = call_user_func_array([$object, $method], $params);
+                                                }
+                                            }
+                                        } catch (Exception $e) { /** Ignore errors */ }
                                     }
-                                } catch (Exception $e) {
-                                    // Ignore errors
                                 }
                             }
                             break;
-                        }
                     }
                     break;
             }
