@@ -22,7 +22,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/preview.php' => config_path('preview.php')
+            __DIR__.'/../config/preview.php' => config_path('preview.php'),
         ]);
 
         if (!$this->app->routesAreCached()) {
@@ -49,7 +49,7 @@ class PreviewServiceProvider extends LaravelServiceProvider
     }
 
     /**
-     * Check if the package is enabled
+     * Check if the package is enabled.
      *
      * @return bool
      */

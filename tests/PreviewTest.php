@@ -3,7 +3,6 @@
 namespace Gregoriohc\Preview\Tests;
 
 use Gregoriohc\Preview\Tests\Models\User;
-use Illuminate\Database\Capsule\Manager as DB;
 
 class PreviewTest extends TestCase
 {
@@ -29,8 +28,8 @@ class PreviewTest extends TestCase
     public function testLoadsModel()
     {
         $userData = [
-            'name' => 'John Doe',
-            'email' => 'johndoe@example.com',
+            'name'     => 'John Doe',
+            'email'    => 'johndoe@example.com',
             'password' => 'secret',
         ];
 
@@ -39,7 +38,7 @@ class PreviewTest extends TestCase
         $user = User::find($user->id);
 
         $crawler = $this->call('GET', '_preview/preview-tests::model', [
-            'user' => User::class . '::' . $user->id,
+            'user' => User::class.'::'.$user->id,
         ]);
 
         $this->assertEquals($userData['email'], $crawler->getContent());
@@ -63,7 +62,7 @@ class PreviewTest extends TestCase
     public function testCreateAndCallsObjectMethodWithoutParams()
     {
         $crawler = $this->call('GET', '_preview/preview-tests::callable', [
-            'something' => User::class . '::getTable',
+            'something' => User::class.'::getTable',
         ]);
 
         $this->assertEquals('users', $crawler->getContent());

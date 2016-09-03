@@ -16,7 +16,8 @@ abstract class TestCase extends TestbenchTestCase
     /**
      * Define environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
+     *
      * @return void
      */
     protected function getEnvironmentSetUp($app)
@@ -24,11 +25,11 @@ abstract class TestCase extends TestbenchTestCase
         // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'test');
         $app['config']->set('database.connections.test', [
-            'driver'   => 'sqlite',
-            'database' => ':memory:',
+            'driver'    => 'sqlite',
+            'database'  => ':memory:',
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
-            'prefix'   => '',
+            'prefix'    => '',
         ]);
 
         // Force enable preview (needed for testing)
@@ -40,7 +41,7 @@ abstract class TestCase extends TestbenchTestCase
     /**
      * Resolve application HTTP exception handler.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
      *
      * @return void
      */
@@ -50,7 +51,7 @@ abstract class TestCase extends TestbenchTestCase
     }
 
     /**
-     * Setup test cases
+     * Setup test cases.
      */
     public function setUp()
     {
